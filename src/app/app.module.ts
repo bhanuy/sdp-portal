@@ -1,38 +1,53 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { PackageComponent } from './package/package.component';
+import { FooterComponent } from './common/footer.component';
+import { HeaderComponent } from './common/header.component';
+import { ApiService } from './shared';
+import { DataService } from './shared';
 import { routing } from './app.routing';
-import { store, effects } from './store';
-import { SharedModule } from './shared/shared.module';
+import { MyDatePickerModule } from 'mydatepicker';
+import {MultiselectDropdownModule} from 'angular-2-dropdown-multiselect/src/multiselect-dropdown';
+import {
+  AgmCoreModule
+} from 'angular2-google-maps/core';
+
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    routing,
-    SharedModule,
-    store,
-    ...effects,
+    HttpModule,
     FormsModule,
-    StoreDevtoolsModule.instrumentStore({
-      monitor: useLogMonitor({
-        visible: true,
-        position: 'right'
-      })
-    }),
-    StoreLogMonitorModule,
-    HttpModule
+    routing,
+    MyDatePickerModule,
+    MultiselectDropdownModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB0ImSbUGhJPw5trT2PriH6idwYEGrEsjU'
+    })
   ],
-  providers: [],
-  bootstrap: [
-    AppComponent
-  ]
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    HeaderComponent,
+    FooterComponent,
+    PackageComponent,
+  ],
+  providers: [
+    ApiService,
+    DataService
+  ],
+
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+
+}
+

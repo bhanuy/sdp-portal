@@ -1,30 +1,17 @@
 import { Component } from '@angular/core';
-import { Http, Response } from '@angular/http';
 
-import { Observable } from 'rxjs';
+import { ApiService } from './shared';
 
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import { Store } from '@ngrx/store';
-import { IAppState } from './store/index';
-import { USER_GET } from './store/profile/profile.actions';
 
 @Component({
-  selector: 'app-root',
+  selector: 'my-app', // <my-app></my-app>
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  url = 'https://angular.io/docs/ts/latest/tutorial/';
 
-  observable$: Observable<{}>;
-
-  constructor(http: Http, store: Store<IAppState>) {
-    this.observable$ = http
-      .get('/api/public/simple')
-      .map((response: Response) => response.json());
-
-    store.dispatch({
-      type: USER_GET
-    });
+  constructor(private api: ApiService) {
+    // Do something with api
   }
 }

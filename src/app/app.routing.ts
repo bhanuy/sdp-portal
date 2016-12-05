@@ -1,15 +1,13 @@
-import { RouterModule, Route } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Route[] = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard'},
-  { loadChildren: 'app/dashboard/dashboard.module#DashboardModule', path: 'dashboard' },
-  { loadChildren: 'app/profile/profile.module#ProfileModule', path: 'profile' }
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { PackageComponent } from './package/package.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent},
+  { path: 'package-list', component: PackageComponent }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(
-  routes,
-  {
-    useHash: true
-  }
-);
+export const routing = RouterModule.forRoot(routes);

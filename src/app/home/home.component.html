@@ -1,0 +1,154 @@
+<div class="banner">
+    <div class="container">
+        <div class="col-md-12 banner-right">
+            <div class="sap_tabs">
+                <div class="booking-info">
+                    <h2>Book Domestic &amp; International Flight Tickets</h2>
+                    <div class="alert alert-danger" [hidden]="error.validation">
+                        <strong>Error!</strong> {{error.msg}}
+                    </div>
+                </div>
+                <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                    <div class="search">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-section">
+                                    <div class="row">
+                                        <form role="form">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="location">Flying From *</label>
+                                                    <input type="text" class="form-control" id="dept" name="dept" placeholder="Type Departure City ?" required [(ngModel)]="packageData.originplace" (keyup)="filter(packageData.originplace,'dept')">
+                                                    <div class="suggestions" *ngIf="departureList.length > 0">
+                                                        <div *ngFor=" let item of departureList" class="country">
+                                                            <a (click)="select(item, 'dept')">{{item}}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="location">Flying To *</label>
+                                                    <input type="text" class="form-control" id="dest" name="dest" placeholder="Type Destination City ?" required [(ngModel)]="packageData.destinationplace" (keyup)="filter(packageData.destinationplace, 'dest')">
+                                                    <div class="suggestions" *ngIf="destinationList.length > 0">
+                                                        <div *ngFor=" let item of destinationList" class="country">
+                                                            <a (click)="select(item, 'dest')">{{item}}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="checkin">Depart *</label>
+                                                <div class="form-group">
+                                                   
+                                                    <div class="input-group">
+                                                        <my-date-picker [options]="myDatePickerNormalOptions" (dateChanged)="onDateChanged($event, 'dept')" [selDate]="packageData.outbounddate" [locale]="locale" ></my-date-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" [hidden]="oneway">
+                                                <div class="form-group">
+                                                    <label for="checkout">Return *</label>
+                                                    <div class="input-group">
+                                                        <my-date-picker [options]="myDatePickerNormalOptions" (dateChanged)="onDateChanged($event, 'dest')" [selDate]="packageData.inbounddate" ></my-date-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="guest">Adult(18+):</label>
+                                                    <select id="guest" name="guest" class="form-control" [(ngModel)]="packageData.adult">
+                                                        <option value="1">1 Guest</option>
+                                                        <option value="2">2 Guests</option>
+                                                        <option value="3">3 Guests</option>
+                                                        <option value="4">4 Guests</option>
+                                                        <option value="5">5 Guests</option>
+                                                        <option value="6">6 Guests</option>
+                                                        <option value="7">7 Guests</option>
+                                                        <option value="8">8 Guests</option>
+                                                        <option value="9">9 Guests</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="children">Children:</label>
+                                                    <select id="children" name="children" class="form-control" [(ngModel)]="packageData.children">
+                                                        <option value="1">1 Guest</option>
+                                                        <option value="2">2 Guests</option>
+                                                        <option value="3">3 Guests</option>
+                                                        <option value="4">4 Guests</option>
+                                                        <option value="5">5 Guests</option>
+                                                        <option value="6">6 Guests</option>
+                                                        <option value="7">7 Guests</option>
+                                                        <option value="8">8 Guests</option>
+                                                        <option value="9">9 Guests</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="budget">Budget</label>
+                                                    <div class="input-group">
+                                                        <input type="number" name="currency" class="form-control currency" min="0" [(ngModel)]="packageData.budget"><span class="input-group-addon">$</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="attractions">Attractions:</label>
+                                                    <div class="clearfix"></div>
+                                                    <ss-multiselect-dropdown [options]="myOptions" [texts]="myTexts" [(ngModel)]="selectedOptions" name="name" #name="ngModel" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="children">Trade of Flight Duration:</label>
+                                                    <select id="children" name="tfd" class="form-control" [(ngModel)]="packageData.tfd">
+                                                        <option value="min">min</option>
+                                                        <option value="max">max</option>
+                                                    </select>
+                                                </div>                                            
+                                            </div>                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="children">Trade of Flight Price:</label>
+                                                    <select id="children" name="tfp" class="form-control" [(ngModel)]="packageData.tfp">
+                                                        <option value="min">min</option>
+                                                        <option value="max">max</option>
+                                                    </select>
+                                                </div>                                            
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="children">Trade of Hotel Price:</label>
+                                                    <select id="children" name="thp" class="form-control" [(ngModel)]="packageData.thp">
+                                                        <option value="min">min</option>
+                                                        <option value="max">max</option>
+                                                    </select>
+                                                </div>                                            
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="children">Trade of Flight Rating:</label>
+                                                    <select id="children" name="tfr" class="form-control" [(ngModel)]="packageData.thr">
+                                                        <option value="min">min</option>
+                                                        <option value="max">max</option>
+                                                    </select>
+                                                </div>                                            
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button type="button" class="btn btn-primary btn-lg"  (click)="onSubmit()">Submit</button>
+                                                <button type="button" class="btn btn-default btn-lg">Reset</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

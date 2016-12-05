@@ -1,0 +1,162 @@
+<div class="package" *ngIf="products">
+    <div class="banner-bottom">
+        <!-- container -->
+        <div class="container">
+            <div class="faqs-top-grids">
+                <div class="product-grids">
+                    <div class="col-md-12 product-right" *ngFor="let item of products; let i = index;">
+                        <div class="p-table" [hidden]="showDetail == i">
+                            <div class="p-table-grids">
+                                <div class="col-md-3 p-table-grid">
+                                    <div class="p-table-grad-heading">
+                                        <h6>Hotel</h6>
+                                    </div>
+                                    <div class="p-table-grid-info">
+                                        <a href="#"><img src="images/p2.jpg" alt=""></a>
+                                        <div class="room-basic-info">
+                                            <a href="#">{{item.hotel.name}}</a>
+                                            <h6></h6>
+                                            <p>Hotel Rank: {{item.hotel.ranking}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-table-grid">
+                                    <div class="p-table-grad-heading">
+                                        <h6>Flight</h6>
+                                    </div>
+                                    <div class="p-table-grid-info">
+                                        <p>
+                                            <span class="glyphicon glyphicon-plane" id="plane-to"></span> {{item.flight.flight_info[0].info[0].departureTime | date:'shortTime' }}&nbsp;
+                                            <span class="flight-city">{{item.flight.flight_info[0].info[0].origin}}</span> &nbsp;&nbsp;
+                                            <span class="glyphicon glyphicon-plane" id="plane-from"></span> {{item.flight.flight_info[0].info[0].arrivalTime | date:'shortTime' }}
+                                            <span class="flight-city"> {{item.flight.flight_info[0].info[0].destination}}</span>
+                                        </p>
+                                        <p>
+                                            <span class="glyphicon glyphicon-plane" id="plane-to"></span> {{item.flight.flight_info[1].info[0].departureTime | date:'shortTime' }}&nbsp;
+                                            <span class="flight-city">{{item.flight.flight_info[1].info[0].origin}}</span> &nbsp;&nbsp;
+                                            <span class="glyphicon glyphicon-plane" id="plane-from"></span> {{item.flight.flight_info[1].info[0].arrivalTime | date:'shortTime' }}
+                                            <span class="flight-city"> {{item.flight.flight_info[1].info[0].destination}}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 p-table-grid">
+                                    <div class="p-table-grad-heading">
+                                        <h6>Package Price</h6>
+                                    </div>
+                                    <div class="avg-rate">
+                                        <h5>Recommended for you</h5>
+                                        <span class="p-offer">{{item.flight.price.Price + item.hotel.room_price |  currency:'EUR':true:'1.2-2' }}</span>
+                                        <button type="button" class="btn btn-success" (click)="productDetail(item, i)">Show Detail</button>
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                        <div class="package-detail" [hidden]="showDetail != i">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    Flight{{item.flight.price.Price | currency:'EUR':true:'1.2-2' }}
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="panel panel-heading well well-sm">OUTBOUND</div>
+                                                            <div class="panel-body">
+                                                                <p>Carrier: {{item.flight.flight_info[0].info[0].carrier}}</p>
+                                                                <p>FlightNo: {{item.flight.flight_info[0].info[0].flightNumber}}</p>
+                                                                <p>Departure Time: {{item.flight.flight_info[0].info[0].departureTime | date:'medium' }}</p>
+                                                                <p>Arrival time: {{item.flight.flight_info[0].info[0].arrivalTime | date:'medium' }}</p>
+                                                                <p>Origin: {{item.flight.flight_info[0].info[0].origin}}</p>
+                                                                <p>Destination: {{item.flight.flight_info[0].info[0].destination}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="panel panel-heading well well-sm">RETURN</div>
+                                                            <div class="panel-body">
+                                                                <p>Carrier: {{item.flight.flight_info[1].info[0].carrier}}</p>
+                                                                <p>FlightNo: {{item.flight.flight_info[1].info[0].flightNumber}}</p>
+                                                                <p>Departure Time: {{item.flight.flight_info[1].info[0].departureTime | date:'medium' }}</p>
+                                                                <p>Arrival time: {{item.flight.flight_info[1].info[0].arrivalTime | date:'medium' }}</p>
+                                                                <p>Origin: {{item.flight.flight_info[1].info[0].origin}}</p>
+                                                                <p>Destination: {{item.flight.flight_info[1].info[0].destination}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    Hotel
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="panel-body">
+                                                                <p>Name: {{item.hotel.name}}</p>
+                                                                <p>Checkin: {{item.flight.flight_info[0].info[0].arrivalTime | date:'shortDate' }}</p>
+                                                                <p>Checkout: {{item.flight.flight_info[1].info[0].departureTime | date:'shortDate' }}</p>
+                                                                <p>Rank: {{item.hotel.ranking}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="panel-body">
+                                                                <sebm-google-map [latitude]="52.501973" [longitude]="13.394973">
+                                                                    <sebm-google-map-marker [latitude]="52.501973" [longitude]="13.394973"></sebm-google-map-marker>
+                                                                </sebm-google-map>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    Vaccinations
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div *ngFor="let vaccination of item.Vaccinations;">
+                                                        <h4>{{vaccination.category}}</h4>
+                                                        <div class="small text-muted">{{vaccination.description}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    Attractions
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="col-md-4  animated" *ngFor="let attraction of item.Attractions;">
+                                                        <div class="panel panel panel-default">
+                                                            <h3>{{attraction.name}}</h3>
+                                                            <hr>
+                                                            <hr>
+                                                            <a href="#" style="word-wrap: break-word;">{{attraction.types}}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-success" (click)="productBrief()">Show Less</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <!-- //container -->
+    </div>
+</div>
