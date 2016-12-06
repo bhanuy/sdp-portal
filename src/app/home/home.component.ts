@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IMultiSelectOption, IMultiSelectTexts} from 'angular-2-dropdown-multiselect/src/multiselect-dropdown';
-import { ApiService } from '../shared/index'
-import { DataService } from '../shared/index'
+import { ApiService } from '../shared/index';
+import { DataService } from '../shared/index';
+import * as _ from "lodash";
 @Component({
   selector: 'my-home',
   templateUrl: './home.component.html',
@@ -47,6 +48,7 @@ export class HomeComponent  {
     tfp: 'min',
     thr: 'min',
     thp: 'min',
+    tft: 'min',
   }
 
   public error = {
@@ -58,7 +60,7 @@ export class HomeComponent  {
 
   private myDatePickerNormalOptions = {
     todayBtnTxt: 'Today',
-    dateFormat: 'dd mm yyyy',
+    dateFormat: 'yyyy-mm-dd',
     firstDayOfWeek: 'mo',
     sunHighlight: true,
     showCurrentDay: true,
@@ -177,15 +179,26 @@ export class HomeComponent  {
       this.error.msg = "Inbound date cant be earlier than outbounddate."
    }else{
      this.error.validation = true;
-     console.log('form submitted');
-    this.apiService.getResult().subscribe(
+     // console.log('form submitted');
+     // var attraction_array = [];
+     // for(var i = 0; i < this.selectedOptions.length; i++){
+     //    for(var j = 0; j < this.myOptions.length; j++){
+     //       if(this.selectedOptions[i] == this.myOptions[j].id){
+     //         attraction_array.push(this.myOptions[j].name);
+     //       }
+     //   } 
+     // }
+
+     // this.packageData.attractions = attraction_array.join();
+     // console.log(this.packageData);
+    this.apiService.getResult(this.packageData).subscribe(
       data =>{
         console.log(data);
         this.package = data;
         this.dataService.saveData(data);
       },
       error => console.log(error),
-      () => this.router.navigate(['/package-list'])
+      // () => this.router.navigate(['/package-list'])
       );
 
    }
