@@ -25,7 +25,7 @@ export class HomeComponent  {
     inbounddate: '',
     attractions: '',
     budget: '',
-    adult: '',
+    adult: '1',
     children: '',
     tfd: 'min',
     tfp: 'min',
