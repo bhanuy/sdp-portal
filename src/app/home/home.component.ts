@@ -26,7 +26,7 @@ export class HomeComponent  {
     attractions: '',
     budget: '',
     adult: '1',
-    children: '',
+    children: '1',
     tfd: 'min',
     tfp: 'min',
     thr: 'min',
@@ -78,9 +78,8 @@ export class HomeComponent  {
   { id: 11, name: 'Night Club' },
   { id: 12, name: 'Restaurant' },
   { id: 13, name: 'Shopping Mall' },
-  { id: 14, name: 'Travel Agency' },
+  { id: 14, name: 'Bar' },
   { id: 15, name: 'Zoo' },
-  { id: 16, name: 'Bar' },
   ];
 
   private myTexts: IMultiSelectTexts = {
@@ -162,18 +161,21 @@ export class HomeComponent  {
       this.error.msg = "Inbound date cant be earlier than outbounddate."
    }else{
      this.error.validation = true;
-     // console.log('form submitted');
-     // var attraction_array = [];
-     // for(var i = 0; i < this.selectedOptions.length; i++){
-     //    for(var j = 0; j < this.myOptions.length; j++){
-     //       if(this.selectedOptions[i] == this.myOptions[j].id){
-     //         attraction_array.push(this.myOptions[j].name);
-     //       }
-     //   }
-     // }
 
-     // this.packageData.attractions = attraction_array.join();
-     // console.log(this.packageData);
+     if(this.selectedOptions.length > 0){
+		var attraction_array = [];
+		for(var i = 0; i < this.selectedOptions.length; i++){
+		for(var j = 0; j < this.myOptions.length; j++){
+		   if(this.selectedOptions[i] == this.myOptions[j].id){
+		     attraction_array.push(this.myOptions[j].name);
+		   }
+		}
+		}
+     	this.packageData.attractions = attraction_array.join();
+     	console.log('package', this.packageData);
+     }
+   	
+     
     this.apiService.getResult(this.packageData).subscribe(
       data =>{
         console.log(data);
