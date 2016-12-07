@@ -5,12 +5,10 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { PackageComponent } from './package/package.component';
 import { FooterComponent } from './common/footer.component';
 import { HeaderComponent } from './common/header.component';
-import { ApiService } from './shared';
-import { DataService } from './shared';
+import { ApiService, DataService } from './shared';
 import { routing } from './app.routing';
 import { MyDatePickerModule } from 'mydatepicker';
 import {MultiselectDropdownModule} from 'angular-2-dropdown-multiselect/src/multiselect-dropdown';
@@ -35,7 +33,6 @@ import {
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
     HeaderComponent,
     FooterComponent,
     PackageComponent,

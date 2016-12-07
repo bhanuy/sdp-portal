@@ -1,10 +1,10 @@
-<div class="package" *ngIf="products">
+<div class="package" *ngIf="products.results">
     <div class="banner-bottom">
         <!-- container -->
         <div class="container">
             <div class="faqs-top-grids">
                 <div class="product-grids">
-                    <div class="col-md-12 product-right" *ngFor="let item of products; let i = index;">
+                    <div class="col-md-12 product-right" *ngFor="let item of products.results; let i = index;">
                         <div class="p-table" [hidden]="showDetail == i">
                             <div class="p-table-grids">
                                 <div class="col-md-3 p-table-grid">
