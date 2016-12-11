@@ -26,7 +26,7 @@ export class HomeComponent  {
     attractions: '',
     budget: '',
     adult: '1',
-    children: '1',
+    children: '0',
     tfd: 'min',
     tfp: 'min',
     thr: 'min',
@@ -161,8 +161,8 @@ export class HomeComponent  {
       this.error.msg = "Inbound date cant be earlier than outbounddate."
    }else{
      this.error.validation = true;
-
-     if(this.selectedOptions.length > 0){
+     if(this.selectedOptions){
+      if(this.selectedOptions.length > 0){
 		var attraction_array = [];
 		for(var i = 0; i < this.selectedOptions.length; i++){
 		for(var j = 0; j < this.myOptions.length; j++){
@@ -173,6 +173,7 @@ export class HomeComponent  {
 		}
      	this.packageData.attractions = attraction_array.join();
      	console.log('package', this.packageData);
+     }    	
      }
    	
      

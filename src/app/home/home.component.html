@@ -15,7 +15,7 @@
                                 <div class="form-section">
                                     <div class="row">
                                         <form role="form">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="location">Flying From *</label>
                                                     <input type="text" class="form-control" id="dept" name="dept" placeholder="Type Departure City ?" required [(ngModel)]="packageData.originplace" (keyup)="filter(packageData.originplace,'dept')">
@@ -26,7 +26,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="location">Flying To *</label>
                                                     <input type="text" class="form-control" id="dest" name="dest" placeholder="Type Destination City ?" required [(ngModel)]="packageData.destinationplace" (keyup)="filter(packageData.destinationplace, 'dest')">
@@ -38,7 +38,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="checkin">Depart *</label>
+                                                <div for="checkin" class="label-input">Depart *</div>
                                                 <div class="form-group">
                                                    
                                                     <div class="input-group">
@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="col-md-6" [hidden]="oneway">
                                                 <div class="form-group">
-                                                    <label for="checkout">Return *</label>
+                                                    <div for="checkout" class="label-input">Return *</div>
                                                     <div class="input-group">
                                                         <my-date-picker [options]="myDatePickerNormalOptions" (dateChanged)="onDateChanged($event, 'dest')" [selDate]="packageData.inbounddate" ></my-date-picker>
                                                     </div>
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="guest">Adult(18+):</label>
+                                                    <label for="guest">Adult(18+): *</label>
                                                     <select id="guest" name="guest" class="form-control" [(ngModel)]="packageData.adult">
                                                         <option value="1">1 Guest</option>
                                                         <option value="2">2 Guests</option>
@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="budget">Budget</label>
+                                                    <div for="budget" class="label-input">Budget *</div>
                                                     <div class="input-group">
                                                         <input type="number" name="currency" class="form-control currency" min="0" [(ngModel)]="packageData.budget"><span class="input-group-addon">€</span>
                                                     </div>
@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="children">Trade of Flight Duration:</label>
+                                                    <label for="children">Trade off Flight Duration:</label>
                                                     <select id="children" name="tfd" class="form-control" [(ngModel)]="packageData.tfd">
                                                         <option value="min">min</option>
                                                         <option value="max">max</option>
@@ -111,7 +111,7 @@
                                                 </div>                                            
                                             </div>                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="children">Trade of Flight Price:</label>
+                                                    <label for="children">Trade off Flight Price:</label>
                                                     <select id="children" name="tfp" class="form-control" [(ngModel)]="packageData.tfp">
                                                         <option value="min">min</option>
                                                         <option value="max">max</option>
@@ -120,7 +120,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="children">Trade of Hotel Price:</label>
+                                                    <label for="children">Trade off Hotel Price:</label>
                                                     <select id="children" name="thp" class="form-control" [(ngModel)]="packageData.thp">
                                                         <option value="min">min</option>
                                                         <option value="max">max</option>
@@ -129,7 +129,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="children">Trade of Flight Rating:</label>
+                                                    <label for="children">Trade off Flight Rating:</label>
                                                     <select id="children" name="tfr" class="form-control" [(ngModel)]="packageData.thr">
                                                         <option value="min">min</option>
                                                         <option value="max">max</option>

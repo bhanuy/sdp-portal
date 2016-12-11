@@ -2981,7 +2981,29 @@ p.disclaimer {
 }
 .ellipsis-2 { text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } .panel h3, .ellipsis { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 
+.country {
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid grey;
+}
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+.suggestions {
+    background-color: rgba(0, 0, 0, 0.89);
+    text-align: left;
+    z-index: 999999;
+    position: absolute;
+    width: 100%;
+}
 
+.label-input {
+    color: #6fd508;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
