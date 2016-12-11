@@ -11,7 +11,7 @@ import { HeaderComponent } from './common/header.component';
 import { ApiService, DataService } from './shared';
 import { routing } from './app.routing';
 import { MyDatePickerModule } from 'mydatepicker';
-import {MultiselectDropdownModule} from 'angular-2-dropdown-multiselect/src/multiselect-dropdown';
+import {MultiselectDropdownModule} from './common/multi-dropdown';
 import {
   AgmCoreModule
 } from 'angular2-google-maps/core';

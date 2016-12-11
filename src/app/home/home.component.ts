@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IMultiSelectOption, IMultiSelectTexts} from 'angular-2-dropdown-multiselect/src/multiselect-dropdown';
+import { IMultiSelectOption, IMultiSelectTexts} from '../common/multi-dropdown';
 import { ApiService } from '../shared/index';
 import { DataService } from '../shared/index';
 @Component({

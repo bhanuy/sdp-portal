@@ -138,14 +138,26 @@
                                                     Attractions
                                                 </div>
                                                 <div class="panel-body">
-                                                    <div class="col-md-4  animated" *ngFor="let attraction of item.Attractions;">
-                                                        <div class="panel panel panel-default">
-                                                            <h3>{{attraction.name}}</h3>
-                                                            <hr>
-                                                            <hr>
-                                                            <a href="#" style="word-wrap: break-word;">{{attraction.types}}</a>
+                                                    <div class="col-md-4  animated" *ngFor="let attraction of item.Attractions; let i = index;">
+                                                    <div class="panel panel-primary">
+                                                        <div class="panel-heading clearfix">
+                                                          <h4 class="panel-title pull-left" style="padding-top: 7.5px;">{{attraction.name}}</h4>
+                                                          <div class="btn-group pull-right">{{attraction.rating}}</div> 
                                                         </div>
+                                                        <table class="table table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Attraction Type</th>
+                                                                    <th>{{attraction.types}}</th>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                        <div class="panel-footer">{{attraction.formatted_address}}</div>
+                                                     </div>
+                                                      <div *ngIf = "i % 3 == 0" class="clearfix"></div>
                                                     </div>
+                                                     
+
                                                 </div>
                                             </div>
                                         </div>
