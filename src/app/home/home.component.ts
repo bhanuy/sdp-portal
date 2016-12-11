@@ -183,7 +183,7 @@ export class HomeComponent  {
         this.package = data;
         this.dataService.saveData(data);
       },
-      error => console.log(error),
+      error => this.router.navigate(['/error']),
       () => this.router.navigate(['/package-list'])
       );
 

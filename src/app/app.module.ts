@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { PackageComponent } from './package/package.component';
 import { FooterComponent } from './common/footer.component';
 import { HeaderComponent } from './common/header.component';
+import { PageNotFoundComponent } from './common/404error.component';
 import { ApiService, DataService } from './shared';
 import { routing } from './app.routing';
 import { MyDatePickerModule } from 'mydatepicker';
@@ -36,6 +37,7 @@ import {
     HeaderComponent,
     FooterComponent,
     PackageComponent,
+    PageNotFoundComponent
   ],
   providers: [
     ApiService,
