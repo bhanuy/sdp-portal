@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 import { PackageComponent } from './package/package.component';
 import { FooterComponent } from './common/footer.component';
 import { HeaderComponent } from './common/header.component';
@@ -37,7 +38,8 @@ import {
     HeaderComponent,
     FooterComponent,
     PackageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ContactComponent
   ],
   providers: [
     ApiService,
