@@ -40,7 +40,7 @@
                                             <div class="col-md-6">
                                                 <div for="checkin" class="label-input">Depart *</div>
                                                 <div class="form-group">
-                                                   
+                                                 
                                                     <div class="input-group">
                                                         <my-date-picker [options]="myDatePickerNormalOptions" (dateChanged)="onDateChanged($event, 'dept')" [selDate]="packageData.outbounddate" [locale]="locale" ></my-date-picker>
                                                     </div>
@@ -110,45 +110,61 @@
                                                     </select>
                                                 </div>                                            
                                             </div>                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="children">Trade off Flight Price:</label>
-                                                    <select id="children" name="tfp" class="form-control" [(ngModel)]="packageData.tfp">
-                                                        <option value="min">min</option>
-                                                        <option value="max">max</option>
-                                                    </select>
-                                                </div>                                            
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="children">Trade off Hotel Price:</label>
-                                                    <select id="children" name="thp" class="form-control" [(ngModel)]="packageData.thp">
-                                                        <option value="min">min</option>
-                                                        <option value="max">max</option>
-                                                    </select>
-                                                </div>                                            
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="children">Trade off Flight Rating:</label>
-                                                    <select id="children" name="tfr" class="form-control" [(ngModel)]="packageData.thr">
-                                                        <option value="min">min</option>
-                                                        <option value="max">max</option>
-                                                    </select>
-                                                </div>                                            
-                                            </div>
-                                            <div class="col-md-12">
-                                                <button type="button" class="btn btn-primary btn-lg"  (click)="onSubmit()">Submit</button>
-                                                <button type="button" class="btn btn-default btn-lg">Reset</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                                            <div class="form-group">
+                                                <label for="children">Trade off Flight Price:</label>
+                                                <select id="children" name="tfp" class="form-control" [(ngModel)]="packageData.tfp">
+                                                    <option value="min">min</option>
+                                                    <option value="max">max</option>
+                                                </select>
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="thp">Trade off Hotel Price:</label>
+                                                <select id="thp" name="thp" class="form-control" [(ngModel)]="packageData.thp">
+                                                    <option value="min">min</option>
+                                                    <option value="max">max</option>
+                                                </select>
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="thr">Trade off Hotel Rating:</label>
+                                                <select id="thr" name="tfr" class="form-control" [(ngModel)]="packageData.thr">
+                                                    <option value="min">min</option>
+                                                    <option value="max">max</option>
+                                                </select>
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="tft">Trade off Flight Transit:</label>
+                                                <select id="tft" name="trt" class="form-control" [(ngModel)]="packageData.tft">
+                                                    <option value="min">min</option>
+                                                    <option value="max">max</option>
+                                                </select>
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-primary btn-lg"  (click)="onSubmit()">Submit
+                                            </button>
+                                            <button type="button" class="btn btn-default btn-lg">Reset</button>
+                                            <div [hidden]="hideLoader" class="spinner">
+                                              <div></div>
+                                              <div></div>
+                                              <div></div>
+                                              <div></div>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 </div>
 

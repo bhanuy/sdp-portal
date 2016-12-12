@@ -15,10 +15,14 @@ export class PackageComponent {
 	products:any;
 	product: any;
 	showDetail: number;
+	totalDay: number;
 
 	constructor(private dataService: DataService,private _location: Location) {
 		this.products = this.dataService.getData();
-    console.log('the products', this.products.results.length);
+		console.log(this.products);
+		this.totalDay = this.dataService.getDays() /86400;
+
+    	
 	}
 
 	productDetail(item,i) {

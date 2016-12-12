@@ -25,17 +25,18 @@
                                         <h6>Flight</h6>
                                     </div>
                                     <div class="p-table-grid-info">
-                                        <p>
-                                            <span class="glyphicon glyphicon-plane" id="plane-to"></span> {{item.flight.flight_info[0].info[0].departureTime | date:'shortTime' }}&nbsp;
-                                            <span class="flight-city">{{item.flight.flight_info[0].info[0].origin}}</span> &nbsp;&nbsp;
-                                            <span class="glyphicon glyphicon-plane" id="plane-from"></span> {{item.flight.flight_info[0].info[0].arrivalTime | date:'shortTime' }}
-                                            <span class="flight-city"> {{item.flight.flight_info[0].info[0].destination}}</span>
+
+                                        <p *ngFor="let outbound of item.flight.flight_info[0].info" >
+                                            <span class="glyphicon glyphicon-plane plane-to"></span> {{outbound.departureTime | date:'medium' }}&nbsp;
+                                            <span class="flight-city">{{outbound.origin}}</span> &nbsp;&nbsp;
+                                            <span class="glyphicon glyphicon-plane"></span> {{outbound.arrivalTime | date:'medium' }}
+                                            <span class="flight-city"> {{outbound.destination}}</span>
                                         </p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-plane" id="plane-to"></span> {{item.flight.flight_info[1].info[0].departureTime | date:'shortTime' }}&nbsp;
-                                            <span class="flight-city">{{item.flight.flight_info[1].info[0].origin}}</span> &nbsp;&nbsp;
-                                            <span class="glyphicon glyphicon-plane" id="plane-from"></span> {{item.flight.flight_info[1].info[0].arrivalTime | date:'shortTime' }}
-                                            <span class="flight-city"> {{item.flight.flight_info[1].info[0].destination}}</span>
+                                        <p *ngFor="let inbound of item.flight.flight_info[1].info">
+                                            <span class="glyphicon glyphicon-plane plane-to"></span> {{inbound.departureTime | date:'medium' }}&nbsp;
+                                            <span class="flight-city">{{inbound.origin}}</span> &nbsp;&nbsp;
+                                            <span class="glyphicon glyphicon-plane"></span> {{inbound.arrivalTime | date:'medium' }}
+                                            <span class="flight-city"> {{inbound.destination}}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -45,7 +46,7 @@
                                     </div>
                                     <div class="avg-rate">
                                         <h5>Recommended for you</h5>
-                                        <span class="p-offer">{{item.flight.price.Price + item.hotel.room_price |  currency:'EUR':true:'1.2-2' }}</span>
+                                        <span class="p-offer">{{item.flight.price.Price + (item.hotel.room_price * totalDay)  |  currency:'EUR':true:'1.2-2' }}</span>
                                         <button type="button" class="btn btn-success" (click)="productDetail(item, i)">Show Detail</button>
                                     </div>
                                 </div>
@@ -59,34 +60,36 @@
                                 <div class="ibox-content">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="panel panel-info">
+                                            <div class="panel panel-primary">
                                                 <div class="panel-heading clearfix">
                                                       <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Flight</h4>
-                                                      <div class="btn-group pull-right">{{item.flight.price.Price | currency:'EUR':true:'1.2-2' }}
-                                                      </div>                                               
-                                                 </div>
+
+                                                    <div class="pricing-table pull-right">
+                                                        <span class="sm-currency">€</span>{{item.flight.price.Price}}   
+                                                    </div>                                                 
+                                                    </div>
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="panel panel-heading well well-sm">OUTBOUND</div>
-                                                            <div class="panel-body">
-                                                                <p>Carrier: {{item.flight.flight_info[0].info[0].carrier}}</p>
-                                                                <p>FlightNo: {{item.flight.flight_info[0].info[0].flightNumber}}</p>
-                                                                <p>Departure Time: {{item.flight.flight_info[0].info[0].departureTime | date:'medium' }}</p>
-                                                                <p>Arrival time: {{item.flight.flight_info[0].info[0].arrivalTime | date:'medium' }}</p>
-                                                                <p>Origin: {{item.flight.flight_info[0].info[0].origin}}</p>
-                                                                <p>Destination: {{item.flight.flight_info[0].info[0].destination}}</p>
+                                                            <div class="panel-body" *ngFor="let outbound of item.flight.flight_info[0].info">
+                                                                <p>Carrier: {{outbound.carrier}}</p>
+                                                                <p>FlightNo: {{outbound.flightNumber}}</p>
+                                                                <p>Departure Time: {{outbound.departureTime | date:'medium' }}</p>
+                                                                <p>Arrival time: {{outbound.arrivalTime | date:'medium' }}</p>
+                                                                <p>Origin: {{outbound.origin}}</p>
+                                                                <p>Destination: {{outbound.destination}}</p>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="panel panel-heading well well-sm">RETURN</div>
-                                                            <div class="panel-body">
-                                                                <p>Carrier: {{item.flight.flight_info[1].info[0].carrier}}</p>
-                                                                <p>FlightNo: {{item.flight.flight_info[1].info[0].flightNumber}}</p>
-                                                                <p>Departure Time: {{item.flight.flight_info[1].info[0].departureTime | date:'medium' }}</p>
-                                                                <p>Arrival time: {{item.flight.flight_info[1].info[0].arrivalTime | date:'medium' }}</p>
-                                                                <p>Origin: {{item.flight.flight_info[1].info[0].origin}}</p>
-                                                                <p>Destination: {{item.flight.flight_info[1].info[0].destination}}</p>
+                                                            <div class="panel-body" *ngFor="let inbound of item.flight.flight_info[1].info">
+                                                                <p>Carrier: {{inbound.carrier}}</p>
+                                                                <p>FlightNo: {{inbound.flightNumber}}</p>
+                                                                <p>Departure Time: {{inbound.departureTime | date:'medium' }}</p>
+                                                                <p>Arrival time: {{inbound.arrivalTime | date:'medium' }}</p>
+                                                                <p>Origin: {{inbound.origin}}</p>
+                                                                <p>Destination: {{inbound.destination}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -94,9 +97,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="panel panel-info">
-                                                <div class="panel-heading">
-                                                    Hotel
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading clearfix">
+                                                      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Hotel</h4>
+                                                    <div class="pricing-table pull-right">
+                                                        <span class="sm-currency">€</span>{{(item.hotel.room_price * totalDay)}}   
+                                                    </div>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div class="row">
@@ -120,9 +126,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="panel panel-info">
-                                                <div class="panel-heading">
-                                                    Vaccinations
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading clearfix">
+                                                      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Vaccinations</h4>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div *ngFor="let vaccination of item.Vaccinations;">
@@ -133,38 +139,51 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="panel panel-info">
-                                                <div class="panel-heading">
-                                                    Attractions
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading clearfix">
+                                                      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Attractions</h4>
                                                 </div>
                                                 <div class="panel-body">
-                                                    <div class="col-md-4  animated" *ngFor="let attraction of item.Attractions; let i = index;">
-                                                    <div class="panel panel-primary">
+                                                    <span *ngFor="let attraction of item.Attractions; let i = index;" >
+                                                    <div class="col-md-4  animated" >
+                                                        <div class="panel panel-info">
                                                         <div class="panel-heading clearfix">
-                                                          <h4 class="panel-title pull-left" style="padding-top: 7.5px;">{{attraction.name}}</h4>
-                                                          <div class="btn-group pull-right">{{attraction.rating}}</div> 
+                                                          <h5 class="panel-title pull-left" style="padding-top: 7.5px;">{{attraction.name}}</h5>
+                                                          <div class="btn-group pull-right rating">
+                                                            <p>{{attraction.rating}}</p>
+                                                          </div>
                                                         </div>
-                                                        <table class="table table-condensed">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Attraction Type</th>
-                                                                    <th>{{attraction.types}}</th>
-                                                                </tr>
-                                                            </thead>
-                                                        </table>
+
+                                                          <div class="panel panel-body">
+                                                            <div class="row">
+                                                              <div class="col-md-3">
+                                                                Types
+                                                              </div>
+                                                              <div class="col-md-9">
+                                                                <div class="row">
+                                                                  <div class="col-md-12 text-extra" *ngFor="let type of attraction.types;">
+                                                                    {{type}}
+                                                                     <hr>
+                                                                </div>
+                                                                 
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
                                                         <div class="panel-footer">{{attraction.formatted_address}}</div>
                                                      </div>
-                                                      <div *ngIf = "i % 3 == 0" class="clearfix"></div>
-                                                    </div>
-                                                     
-
+                                                  </div>
+                                                  <div *ngIf="(i+1) % 3 === 0" class="clearfix"></div>
+                                              </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <h3 class="btn btn-success btn-lg center-block" (click)="productBrief()">Show Less Details</h3> 
+                                
                             </div>
-                            <button type="button" class="btn btn-success" (click)="productBrief()">Show Less</button>
+                            </div>
+
                         </div>
                     </div>
                     <div class="clearfix"> </div>
