@@ -1,4 +1,4 @@
-<div class="package" *ngIf="products.results">
+<div class="package" *ngIf="products.results && !products.results[0].Error">
     <div class="banner-bottom">
         <!-- container -->
         <div class="container">
@@ -187,5 +187,44 @@
             </div>
         </div>
         <!-- //container -->
+    </div>
+</div>
+
+<div class="container" *ngIf="products.results[0].Error">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    Result Not Found</h2>
+                <div class="error-details">
+                    <h3>{{products.results[0].Error}} €</h3>
+                </div>
+                <div class="error-actions">
+                    <a [routerLink]="['/']" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Take Me Home </a><a [routerLink]="['/contact']" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="!products.results[0].Error && !products.results">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    Result Not Found</h2>
+                <div class="error-details">
+                </div>
+                <div class="error-actions">
+                    <a [routerLink]="['/']" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Take Me Home </a><a [routerLink]="['/contact']" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

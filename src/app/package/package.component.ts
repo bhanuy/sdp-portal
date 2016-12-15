@@ -12,7 +12,7 @@ export class PackageComponent {
 	title: string = 'My first angular2-google-maps project';
 	lat: number;
 	lng: number;
-	products:any;
+	products:any = {}
 	product: any;
 	showDetail: number;
 	totalDay: number;
@@ -22,7 +22,7 @@ export class PackageComponent {
 		console.log(this.products);
 		this.totalDay = this.dataService.getDays() /86400;
 
-    	
+
 	}
 
 	productDetail(item,i) {
