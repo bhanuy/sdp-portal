@@ -25,8 +25,7 @@
                                         <h6>Flight</h6>
                                     </div>
                                     <div class="p-table-grid-info">
-
-                                        <p *ngFor="let outbound of item.flight.flight_info[0].info" >
+                                        <p *ngFor="let outbound of item.flight.flight_info[0].info">
                                             <span class="glyphicon glyphicon-plane plane-to"></span> {{outbound.departureTime | date:'medium' }}&nbsp;
                                             <span class="flight-city">{{outbound.origin}}</span> &nbsp;&nbsp;
                                             <span class="glyphicon glyphicon-plane"></span> {{outbound.arrivalTime | date:'medium' }}
@@ -62,12 +61,11 @@
                                         <div class="col-md-12">
                                             <div class="panel panel-primary">
                                                 <div class="panel-heading clearfix">
-                                                      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Flight</h4>
-
+                                                    <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Flight</h4>
                                                     <div class="pricing-table pull-right">
-                                                        <span class="sm-currency">€</span>{{item.flight.price.Price}}   
-                                                    </div>                                                 
+                                                        <span class="sm-currency">€</span>{{item.flight.price.Price}}
                                                     </div>
+                                                </div>
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -99,9 +97,9 @@
                                         <div class="col-md-12">
                                             <div class="panel panel-primary">
                                                 <div class="panel-heading clearfix">
-                                                      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Hotel</h4>
+                                                    <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Hotel</h4>
                                                     <div class="pricing-table pull-right">
-                                                        <span class="sm-currency">€</span>{{(item.hotel.room_price * totalDay)}}   
+                                                        <span class="sm-currency">€</span>{{(item.hotel.room_price * totalDay)}}
                                                     </div>
                                                 </div>
                                                 <div class="panel-body">
@@ -128,7 +126,7 @@
                                         <div class="col-md-12">
                                             <div class="panel panel-primary">
                                                 <div class="panel-heading clearfix">
-                                                      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Vaccinations</h4>
+                                                    <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Vaccinations</h4>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div *ngFor="let vaccination of item.Vaccinations;">
@@ -141,10 +139,10 @@
                                         <div class="col-md-12">
                                             <div class="panel panel-primary">
                                                 <div class="panel-heading clearfix">
-                                                      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Attractions</h4>
+                                                    <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Attractions</h4>
                                                 </div>
                                                 <div class="panel-body">
-                                                    <span *ngFor="let attraction of item.Attractions; let i = index;" >
+                                                    <span *ngFor="let attraction of item.Attractions; let i = index;">
                                                     <div class="col-md-4  animated" >
                                                         <div class="panel panel-info">
                                                         <div class="panel-heading clearfix">
@@ -165,7 +163,7 @@
                                                                     {{type}}
                                                                      <hr>
                                                                 </div>
-                                                                 
+
                                                                 </div>
                                                               </div>
                                                             </div>
@@ -179,11 +177,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                <h3 class="btn btn-success btn-lg center-block" (click)="productBrief()">Show Less Details</h3> 
-                                
+                                    <h3 class="btn btn-success btn-lg center-block" (click)="productBrief()">Show Less Details</h3>
+                                </div>
                             </div>
-                            </div>
-
                         </div>
                     </div>
                     <div class="clearfix"> </div>

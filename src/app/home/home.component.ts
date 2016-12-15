@@ -139,8 +139,22 @@ export class HomeComponent  {
 
   }
 
-  onChange(e){
-    console.log(e)
+  onReset(){
+    this.packageData = {
+      originplace : '',
+      destinationplace: '',
+      outbounddate: '',
+      inbounddate: '',
+      attractions: '',
+      budget: 1000,
+      adult: '1',
+      children: '0',
+      tfd: 'min',
+      tfp: 'min',
+      thr: 'min',
+      thp: 'min',
+      tft: 'min',
+    };
   }
 
   onSubmit() {
