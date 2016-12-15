@@ -57,6 +57,7 @@ export class HomeComponent  {
     componentDisabled: false,
     disableUntil: {year: 0, month: 0, day: 0}
   };
+  private btnDisabled: boolean = false;
   private hideLoader: boolean = true;
   private border: string = 'none';
   private selectedOptions: number[];
@@ -189,6 +190,7 @@ export class HomeComponent  {
      }
 
     this.hideLoader = false;
+    this.btnDisabled = true;
     let totalDays = this.error.inbounddate - this.error.outbounddate;
     console.log(totalDays);
     this.apiService.getResult(this.packageData).subscribe(

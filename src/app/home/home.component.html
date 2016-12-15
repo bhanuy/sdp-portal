@@ -146,9 +146,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                <button type="button" class="btn btn-primary btn-lg" (click)="onSubmit()">Submit
+                                                <button type="button" [disabled]="btnDisabled" class="btn btn-primary btn-lg" (click)="onSubmit()">Submit
                                                 </button>
-                                                <button type="button" class="btn btn-default btn-lg" (click)="onReset()">Reset</button>
+                                                <button type="button" [disabled]="btnDisabled" class="btn btn-default btn-lg" (click)="onReset()">Reset</button>
                                                 <div [hidden]="hideLoader" class="spinner">
                                                     <div></div>
                                                     <div></div>
