@@ -185,9 +185,9 @@ export class HomeComponent  {
 		}
      	this.packageData.attractions = attraction_array.join();
      	console.log('package', this.packageData);
-     }    	
      }
-   	
+     }
+
     this.hideLoader = false;
     let totalDays = this.error.inbounddate - this.error.outbounddate;
     console.log(totalDays);
