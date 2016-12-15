@@ -4,10 +4,12 @@ import { Injectable } from '@angular/core';
 export class DataService {
   sharedData: any;
   sharedDays: number;
+  sharedPassenger: number;
 
-  saveData(str, days){
+  saveData(str, days, passenger){
     this.sharedData = str;
     this.sharedDays = days;
+    this.sharedPassenger = passenger;
   }
 
   getData(){
@@ -15,5 +17,8 @@ export class DataService {
   }
   getDays(){
   	return this.sharedDays;
+  }
+  getPassenger() {
+    return this.sharedPassenger;
   }
 }

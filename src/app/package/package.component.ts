@@ -16,11 +16,13 @@ export class PackageComponent {
 	product: any;
 	showDetail: number;
 	totalDay: number;
+	totalPassenger: number;
 
 	constructor(private dataService: DataService,private _location: Location) {
 		this.products = this.dataService.getData();
 		console.log(this.products);
 		this.totalDay = this.dataService.getDays() /86400;
+		this.totalPassenger = this.dataService.getPassenger();
 
 
 	}

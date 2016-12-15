@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="avg-rate">
                                         <h5>Recommended for you</h5>
-                                        <span class="p-offer">{{item.flight.price.Price + (item.hotel.room_price * totalDay)  |  currency:'EUR':true:'1.2-2' }}</span>
+                                        <span class="p-offer">{{item.flight.price.Price + (item.hotel.room_price * totalDay * totalPassenger)  |  currency:'EUR':true:'1.2-2' }}</span>
                                         <button type="button" class="btn btn-success" (click)="productDetail(item, i)">Show Detail</button>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                                 <div class="panel-heading clearfix">
                                                     <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Hotel</h4>
                                                     <div class="pricing-table pull-right">
-                                                        <span class="sm-currency">€</span>{{(item.hotel.room_price * totalDay)}}
+                                                        <span class="sm-currency">€</span>{{(item.hotel.room_price * totalDay * totalPassenger)}}
                                                     </div>
                                                 </div>
                                                 <div class="panel-body">

@@ -192,11 +192,11 @@ export class HomeComponent  {
     this.hideLoader = false;
     this.btnDisabled = true;
     let totalDays = this.error.inbounddate - this.error.outbounddate;
-    console.log(totalDays);
+    let total_passenger = Number(this.packageData.adult) + Number(this.packageData.children);
     this.apiService.getResult(this.packageData).subscribe(
       data =>{
         this.package = data;
-        this.dataService.saveData(data, totalDays);
+        this.dataService.saveData(data, totalDays, total_passenger);
       },
       error => this.router.navigate(['/error']),
       () => this.router.navigate(['/package-list'])
