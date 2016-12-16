@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
 })
 
 export class ContactComponent {
+  private showRes: boolean = true;
 
+  onSubmit(){
+    this.showRes = false;
+  }
 }

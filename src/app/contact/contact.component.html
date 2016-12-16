@@ -6,7 +6,7 @@
                     <div class="panel-heading">
                         <h1>Contact Us</h1>
                     </div>
-                    <form action="" method="POST">
+                    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="input-group">
@@ -32,9 +32,12 @@
                                     <textarea name="InputMessage" rows="6" class="form-control" type="text" required></textarea>
                                 </div>
                             </div>
-                            <div class="">
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-info pull-right">Send <span class="glyphicon glyphicon-send"></span></button>
                             </div>
+                            <br>
+                            <br>
+                    <div class="well well-sm" [hidden]="showRes">Thank You. We will contact you asap.</div>
                         </div>
                     </form>
                 </div>

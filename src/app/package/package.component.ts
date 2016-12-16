@@ -22,7 +22,8 @@ export class PackageComponent {
 		this.products = this.dataService.getData();
 		console.log(this.products);
 		this.totalDay = this.dataService.getDays() /86400;
-		this.totalPassenger = this.dataService.getPassenger();
+		this.totalPassenger = Math.round(this.dataService.getPassenger()/2);
+		console.log(this.totalPassenger);
 
 
 	}
