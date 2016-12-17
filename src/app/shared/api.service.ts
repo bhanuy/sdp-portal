@@ -28,7 +28,7 @@ export class ApiService {
         params.set('thr', data.thr);
         params.set('thp', data.thp);
 
-    return this.http.get('https://limitless-lowlands-64274.herokuapp.com/sdp',{search: params})
+    return this.http.get('https://sdp-travel.herokuapp.com/sdp',{search: params})
                 .map(this.extractData).catch(this.handleError);
   }
 public extractData(res: Response) {
